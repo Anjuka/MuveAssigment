@@ -33,7 +33,7 @@ ext {
     minSdkVersion = 22
     targetSdkVersion = 28
     compileSdkVersion = 28
-    applicationId = "com.nimbusventure.esolution.helios.passenger"
+    applicationId = "com.anjukakoralage.muveassigment"
 
     // Library dependencies
     supportVersion = '28.0.0'

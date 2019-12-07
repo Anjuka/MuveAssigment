@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 //version name
 def versionMajor = 1
 def versionMinor = 0
