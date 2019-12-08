@@ -3,4 +3,7 @@
 
     <!--Splash Screen-->
     <string name="splash_head">Muve Assigment</string>
+
+
+    <string name="map_key">AIzaSyCIzk2D1UJW3XlLioC-q5oci8GfSuSaAuI</string>
 </resources>
