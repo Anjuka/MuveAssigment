@@ -2,7 +2,11 @@ package com.anjukakoralage.muveassigment.ui.booking;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -24,9 +28,14 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import static com.google.android.gms.maps.model.BitmapDescriptorFactory.fromResource;
 
 /**
  * Created by  on 07,December,2019
@@ -59,10 +68,6 @@ public class BookingFragment extends Fragment implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-        if (locationPermissionGranted){
-            getDeviceLocation();
-        }
     }
 
     private void getLocationPermission(){
@@ -143,11 +148,37 @@ public class BookingFragment extends Fragment implements OnMapReadyCallback {
     private void moveCamera(LatLng latLng, float zoom){
         Log.d(TAG, "moveCamera: Move Camera to " + latLng.latitude + " - " + latLng.longitude);
         gMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom ));
+        setMarkerDeviceLocation(latLng);
 
+
+
+    }
+
+    private void setMarkerDeviceLocation(LatLng latLng){
+        Context context;
+        context = this.getContext();
+        MarkerOptions options = new MarkerOptions()
+                .position(latLng)
+                .icon(bitmapDescriptorFromVector(context, R.drawable.ic_radio_button_checked_black_24dp));
+        gMap.addMarker(options);
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         gMap = googleMap;
+        if (locationPermissionGranted){
+            getDeviceLocation();
+
+            gMap.setMyLocationEnabled(true);
+        }
+    }
+
+    private BitmapDescriptor bitmapDescriptorFromVector(Context context, int vectorResId) {
+        Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorResId);
+        vectorDrawable.setBounds(0, 0, vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight());
+        Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        vectorDrawable.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
 }
