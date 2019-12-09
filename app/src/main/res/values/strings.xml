@@ -16,4 +16,13 @@
     <string name="booking_classic">Classic</string>
     <string name="booking_grand">Grand</string>
     <string name="booking_plus">Plus</string>
+
+    <string name="pickup_time">Pick-up Time</string>
+    <string name="pickup_time_text">2 Min</string>
+
+    <string name="fare_esti">Fare Estimation</string>
+    <string name="fare_esti_text">$84.63 - 114.49</string>
+
+    <string name="capacity">Capacity</string>
+    <string name="capacity_text">1 4 pax.</string>
 </resources>

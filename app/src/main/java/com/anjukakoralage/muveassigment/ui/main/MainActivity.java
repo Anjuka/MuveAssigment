@@ -14,8 +14,6 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.maps.MapView;
 
-import butterknife.BindView;
-
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";

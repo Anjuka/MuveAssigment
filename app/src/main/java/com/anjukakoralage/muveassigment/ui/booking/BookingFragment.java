@@ -185,7 +185,6 @@ public class BookingFragment extends Fragment implements OnMapReadyCallback {
 
         if (locationPermissionGranted){
             getDeviceLocation();
-
             gMap.setMyLocationEnabled(true);
         }
     }
