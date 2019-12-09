@@ -18,7 +18,7 @@ import com.anjukakoralage.muveassigment.ui.main.MainActivity;
  */
 public class SplashFragment extends Fragment {
 
-    private final int SPLASH_DISPLAY_LENGTH = 4000;
+    private final int SPLASH_DISPLAY_LENGTH = 2000;
 
     public SplashFragment() {
     }

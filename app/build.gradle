@@ -8,6 +8,12 @@ def versionPatch = 0
 def versionBuild = 1
 
 android {
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.anjukakoralage.muveassigment"
